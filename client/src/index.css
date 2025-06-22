@@ -1,0 +1,621 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Performance optimizations */
+  --background: #fffef9;
+  --foreground: #2d1810;
+  --muted: #faf8f2;
+  --muted-foreground: #8b7355;
+  --popover: #ffffff;
+  --popover-foreground: #2d1810;
+  --card: #ffffff;
+  --card-foreground: #2d1810;
+  --border: #e6e2d9;
+  --input: #f0eee6;
+  --primary: #ff6b35;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f2ea;
+  --secondary-foreground: #2d1810;
+  --accent: #fdf4e3;
+  --accent-foreground: #2d1810;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --ring: #ff6b35;
+  --radius: 0.75rem;
+  
+  /* Optimized Yoga Color Palette */
+  --saffron: #ff8c42;
+  --turmeric: #e6b800;
+  --marigold: #ffb347;
+  --sandalwood: #f4e8d0;
+  --terracotta: #d2691e;
+  --lotus-pink: #f8d7da;
+  --sacred-white: #fffef9;
+  --earthen-brown: #5d4037;
+  --meditation-gold: #cc9900;
+  --chakra-orange: #ff6b35;
+  --namaste-cream: #f5f2ea;
+  --temple-beige: #e8dcc0;
+  
+  /* Performance variables */
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --blur-backdrop: blur(8px);
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .font-playfair {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Mobile-first responsive typography */
+  h1 { @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl; }
+  h2 { @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl; }
+  h3 { @apply text-lg sm:text-xl md:text-2xl; }
+  h4 { @apply text-base sm:text-lg md:text-xl; }
+  
+  /* Performance improvements */
+  img {
+    @apply max-w-full h-auto;
+    content-visibility: auto;
+  }
+  
+  video {
+    @apply max-w-full h-auto;
+    content-visibility: auto;
+  }
+}
+
+@layer components {
+  /* Performance-optimized gradients */
+  .text-gradient {
+    background: linear-gradient(135deg, #ff8c42, #ffb347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    will-change: transform;
+  }
+
+  .yoga-text-gradient {
+    background: linear-gradient(135deg, #ff8c42 0%, #cc9900 50%, #d2691e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    will-change: transform;
+  }
+
+  /* Responsive design utilities */
+  .yoga-container {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .yoga-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  .yoga-card {
+    @apply bg-white/90 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 border border-orange-100/50;
+    box-shadow: var(--shadow-soft);
+    will-change: transform, box-shadow;
+  }
+
+  .yoga-card:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .yoga-button {
+    @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    will-change: transform, background-color;
+  }
+
+  .yoga-button-primary {
+    @apply yoga-button bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 focus:ring-orange-500;
+  }
+
+  .yoga-button-secondary {
+    @apply yoga-button bg-white text-orange-600 border border-orange-200 hover:bg-orange-50 focus:ring-orange-500;
+  }
+
+  /* Background patterns */
+  .yoga-gradient-bg {
+    background: linear-gradient(135deg, #fffef9 0%, #faf8f2 50%, #f5f2ea 100%);
+  }
+
+  .lotus-pattern-bg {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 179, 71, 0.03) 0%, transparent 50%);
+  }
+
+  /* Mobile-optimized animations */
+  .gentle-float {
+    animation: gentleFloat 6s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  /* Loading states */
+  .skeleton {
+    @apply animate-pulse bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 bg-[length:200%_100%];
+    animation: shimmer 2s infinite;
+  }
+
+  /* Focus states for accessibility */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2;
+  }
+
+  /* Performance-optimized animations */
+  @keyframes gentleFloat {
+    0%, 100% { 
+      transform: translateY(0px);
+    }
+    50% { 
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { 
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 30px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translate3d(-30px, 0, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+  .indian-card {
+    @apply bg-white border rounded-2xl shadow-sm transition-all duration-300;
+    background: linear-gradient(135deg, var(--sacred-white) 0%, var(--namaste-cream) 100%);
+    border: 1px solid var(--temple-beige);
+    box-shadow: 0 4px 16px rgba(255, 140, 0, 0.08);
+  }
+
+  .indian-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 140, 0, 0.12);
+    border-color: var(--saffron);
+  }
+
+  .subtle-glow {
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.15);
+  }
+
+  .gentle-float {
+    animation: gentleFloat 8s ease-in-out infinite;
+  }
+
+  .border-l-3 {
+    border-left-width: 3px;
+  }
+
+  .namaste-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .namaste-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.15);
+  }
+
+  .indian-button {
+    background: linear-gradient(135deg, var(--saffron), var(--marigold));
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.2);
+  }
+
+  .indian-button:hover {
+    background: linear-gradient(135deg, var(--terracotta), var(--saffron));
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .meditation-focus {
+    border: 2px solid var(--saffron);
+    background: var(--sacred-white);
+    transition: all 0.3s ease;
+  }
+
+  .meditation-focus:hover {
+    background: linear-gradient(135deg, var(--sacred-white), var(--sandalwood));
+    border-color: var(--meditation-gold);
+  }
+
+  .pulse-glow {
+    animation: namastePulse 3s ease-in-out infinite;
+  }
+
+  .performance-optimized {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: layout style paint;
+  }
+
+  .gpu-accelerated {
+    transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
+  }
+
+  /* Enhanced Mobile Responsiveness */
+  .mobile-optimized {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Improved touch targets for mobile */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better image loading */
+  .image-optimized {
+    loading: lazy;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Enhanced animation performance */
+  .hw-accelerated {
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+    backface-visibility: hidden;
+  }
+
+  /* Responsive grid improvements */
+  .responsive-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  /* Enhanced responsive breakpoints */
+  @media (min-width: 375px) {
+    .responsive-grid {
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+
+  @media (min-width: 640px) {
+    .responsive-grid {
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+  }
+
+  @media (min-width: 768px) {
+    .responsive-grid {
+      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-grid {
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .responsive-grid {
+      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    }
+  }
+
+  /* Mobile-first responsive typography */
+  .responsive-text-xs { font-size: 0.75rem; line-height: 1rem; }
+  .responsive-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+  .responsive-text-base { font-size: 1rem; line-height: 1.5rem; }
+  .responsive-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+  .responsive-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+  
+  @media (min-width: 640px) {
+    .responsive-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .responsive-text-base { font-size: 1rem; line-height: 1.5rem; }
+    .responsive-text-lg { font-size: 1.25rem; line-height: 1.75rem; }
+    .responsive-text-xl { font-size: 1.5rem; line-height: 2rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-text-lg { font-size: 1.375rem; line-height: 1.875rem; }
+    .responsive-text-xl { font-size: 1.75rem; line-height: 2.25rem; }
+  }
+
+  /* Mobile-safe spacing */
+  .safe-padding-x {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .safe-padding-x {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .safe-padding-x {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Enhanced focus states for accessibility */
+  .focus-enhanced:focus-visible {
+    outline: 2px solid var(--saffron);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  /* Improved loading states */
+  .loading-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0)
+    );
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+
+  .smooth-transition {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .smooth-hover {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .smooth-hover:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .indian-gradient-bg {
+    background: linear-gradient(135deg, var(--sacred-white) 0%, var(--namaste-cream) 70%, var(--sandalwood) 100%);
+    position: relative;
+  }
+
+  .indian-gradient-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(255, 140, 0, 0.08) 0%, transparent 25%),
+      radial-gradient(circle at 85% 85%, rgba(218, 165, 32, 0.06) 0%, transparent 25%),
+      radial-gradient(circle at 50% 50%, rgba(255, 180, 100, 0.03) 0%, transparent 30%);
+    background-size: 200px 200px, 150px 150px, 300px 300px;
+    z-index: -1;
+  }
+
+  .temple-pattern-bg {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 140, 0, 0.04) 0%, transparent 30%),
+      radial-gradient(circle at 75% 75%, rgba(218, 165, 32, 0.03) 0%, transparent 30%);
+    background-size: 180px 180px;
+  }
+
+  .namaste-subtle-bg {
+    background: linear-gradient(135deg, var(--sacred-white) 0%, #fefefe 100%);
+    position: relative;
+  }
+
+  .namaste-subtle-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 140, 0, 0.05) 0%, transparent 35%),
+      radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.04) 0%, transparent 35%),
+      linear-gradient(45deg, transparent 0%, rgba(255, 140, 0, 0.01) 50%, transparent 100%);
+    z-index: -1;
+  }
+
+  .elegant-pattern-bg {
+    background: 
+      linear-gradient(135deg, var(--sacred-white) 0%, var(--namaste-cream) 100%);
+    position: relative;
+  }
+
+  .elegant-pattern-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 30% 30%, rgba(255, 140, 0, 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 70% 70%, rgba(218, 165, 32, 0.04) 0%, transparent 40%),
+      linear-gradient(90deg, transparent 0%, rgba(255, 140, 0, 0.02) 50%, transparent 100%);
+    background-size: 250px 250px, 180px 180px, 100% 100%;
+    z-index: -1;
+  }
+
+  .gentle-float {
+    animation: gentleFloat 6s ease-in-out infinite;
+  }
+
+  .simple-glow {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+  }
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-gentle-float {
+    animation: gentleFloat 6s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes namastePulse {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+    transform: scale(1.01);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes lotus-bloom {
+  0% { transform: rotate(0deg) scale(0.9); opacity: 0.6; }
+  50% { transform: rotate(180deg) scale(1.1); opacity: 1; }
+  100% { transform: rotate(360deg) scale(0.9); opacity: 0.6; }
+}
+
+@keyframes mandala-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes chakra-energy {
+  0%, 100% { 
+    transform: rotate(0deg) scale(1);
+    filter: hue-rotate(0deg);
+  }
+  25% { 
+    transform: rotate(90deg) scale(1.05);
+    filter: hue-rotate(45deg);
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.1);
+    filter: hue-rotate(90deg);
+  }
+  75% { 
+    transform: rotate(270deg) scale(1.05);
+    filter: hue-rotate(135deg);
+  }
+}
